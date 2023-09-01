@@ -1,5 +1,7 @@
 package com.elly.web;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,14 +11,13 @@ import javax.persistence.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @Table(name = "jmember")
+@NoArgsConstructor
+@Data
 public class Member {
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int mno;
@@ -24,16 +25,14 @@ public class Member {
 	@Column(length = 10)
 	private String mname;
 	
-	@Column(name="mid" , unique = true)
+	@Column(name="mid", unique = true)
 	private String mid;
 	
+	@Column(nullable = false, name="mpw")
 	private String mpw;
 	
 	@Column(columnDefinition = "TIMESTAMP")
-	private String mjoindate;
+	private LocalDateTime mjoindate;
+		
 	
-	
-	private String m_addr;
-	private String m_birth;
-	private String m_mbti;
 }
